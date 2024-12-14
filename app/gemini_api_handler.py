@@ -9,10 +9,10 @@ def random_numbers():
     # count = request.args.get('count', default=10, type=int)
 
     # Generate a list of random numbers
-    numbers = generate_10_sentence_objects()
+    greetings = generate_10_sentence_objects()
 
     # Return the list of random numbers as JSON
-    return numbers
+    return greetings
     # return jsonify({
     #     'count': count,
     #     'numbers': numbers

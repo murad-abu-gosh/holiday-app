@@ -11,8 +11,11 @@ def create_app():
     app.config.from_object(Config)
     # Initialize database
     global db
-    db = Database(app.config['MONGO_URI'], app.config['MONGO_DB_NAME'])
-
+    # db = Database(app.config['MONGO_URI'], app.config['MONGO_DB_NAME'])
+    db = Database(
+        region='us-west-2',
+        # table_prefix='holidays'  # optional
+    )
     # Register blueprints
     from app.routes import main
     app.register_blueprint(main)
