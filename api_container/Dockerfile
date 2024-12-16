@@ -25,6 +25,7 @@ RUN pip install flask
 # Expose Flask's default port (5000)
 EXPOSE 5000
 
+
 ENV FLASK_APP=run.py
 # Specify the command to run the Flask application
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]

@@ -1,7 +1,7 @@
 from typing import List, Optional
 
-from app.db_handler import db
 from app.models.holiday import Holiday
+from app.repository.init_db import db
 
 
 class HolidayRepository:

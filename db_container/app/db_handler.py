@@ -5,12 +5,12 @@ import os
 from app.models.holiday import Holiday
 from app.services.holiday_service import HolidayService
 from app.config import Config
-
+from app.repository.init_db import db
 db_app = Flask(__name__)
 
 # Initialize database
 from app.repository.database import Database
-db = Database(region=Config.AWS_REGION)
+
 
 
 @db_app.route('/api/holidays', methods=['GET'])
