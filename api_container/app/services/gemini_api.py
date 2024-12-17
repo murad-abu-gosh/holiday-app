@@ -188,7 +188,10 @@ Here are examples of JSONs:
 ]
 
 
-Generate only JSONs. Only respond with the list of JSONs. Do NOT respond with something like "Here are 10 JSONs...".''',
+Generate only JSONs. Only respond with the list of JSONs. Do NOT respond with something like "Here are 10 JSONs...".
+Try generating holidays from all nationalities/cultures/religions that live in that country. Be inclusive.
+Try making the greetings more specific to that holiday, instead of using the word 'happy' in the greeting. For example, use 'Ramadan Kareem' instead of 'Happy Ramadan'.
+Generate the holidays randomly.'''
 )
 
 chat_session = model.start_chat(
@@ -223,14 +226,14 @@ def extract_and_convert_to_json(json_string):
         return []
 
 
-def generate_10_sentence_objects():
-    response = chat_session.send_message("Generate 5 holidays for IL")
+def generate_10_greetings_list(country: str):
+    response = chat_session.send_message(f"Generate 10 holidays for {country}")
     print(f'gemini response text: {response.text}')
-    sentences_list = extract_and_convert_to_json(response.text)
-    print(f'sentences to JSON: {sentences_list}')
-    return sentences_list
+    greetings_list = extract_and_convert_to_json(response.text)
+    print(f'greetings to JSON: {greetings_list}')
+    return greetings_list
 
 
 if __name__ == '__main__':
-    sent = generate_10_sentence_objects()
+    sent = generate_10_greetings_list('IL')
     print(sent)
