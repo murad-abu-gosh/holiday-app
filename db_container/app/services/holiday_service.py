@@ -2,10 +2,10 @@ from datetime import datetime
 from typing import List, Optional
 
 import requests
-
-from app.config import Config
 from app.models.holiday import Holiday
 from app.repository.holiday_repository import HolidayRepository
+
+from app.config import Config
 
 
 class HolidayService:
@@ -16,8 +16,8 @@ class HolidayService:
 
         # If no holidays found in database, fetch from API
         if not holidays:
-            print(f"No holidays found in database for {country}, fetching from API")
-            holidays = HolidayService._fetch_holidays_from_api(country)
+            print(f"No holidays found in database for {country} in month {month}, fetching from API...")
+            holidays = HolidayService._fetch_holidays_from_api(country, month)
             HolidayRepository.save_holidays(holidays)
 
             # Filter by month if specified
@@ -29,19 +29,20 @@ class HolidayService:
     @staticmethod
     def add_holiday(holiday: Holiday) -> None:
         # Add single holiday to database
-        print(f"Adding new holiday: {holiday.name} for {holiday.country} with date {holiday.date} and greetings {holiday.greetings}")
+        print(
+            f"Adding new holiday: {holiday.name} for {holiday.country} with date {holiday.date} and greetings {holiday.greetings}")
         HolidayRepository.add_holiday(holiday)
 
     @staticmethod
-    def _fetch_holidays_from_api(country: str) -> List[Holiday]:
+    def _fetch_holidays_from_api(country: str, month: Optional[int] = None) -> List[Holiday]:
         params = {
-            'api_key': Config.HOLIDAY_API_KEY,
             'country': country,
+            'month': month,
             'year': datetime.now().year
         }
 
-        print(f"Fetching holidays from API for {country}")
-        response = requests.get(Config.HOLIDAY_API_URL, params=params)
+        print(f"Fetching holidays from API for {country} at month {month}")
+        response = requests.get(f"{Config.HOLIDAY_API_URL}/{country}", params=params)
         response.raise_for_status()
 
         return [Holiday.from_api_response(item, country)
