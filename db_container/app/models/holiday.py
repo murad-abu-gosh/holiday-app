@@ -22,7 +22,21 @@ class Holiday:
         'he': 'Hebrew',
         'ru': 'Russian',
         'fr': 'French',
-        'sp' : 'Spanish'
+        'es': 'Spanish',
+        'de': 'German',
+        'it': 'Italian',
+        'zh': 'Chinese',
+        'ja': 'Japanese',
+        'ko': 'Korean',
+        'pt': 'Portuguese',
+        'hi': 'Hindi',
+        'bn': 'Bengali',
+        'tr': 'Turkish',
+        'vi': 'Vietnamese',
+        'th': 'Thai',
+        'sw': 'Swahili',
+        'ur': 'Urdu',
+        'nl': 'Dutch'
     }
 
     def __init__(self, name: str, date: date, country: str, type: str,
