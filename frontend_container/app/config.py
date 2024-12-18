@@ -1,24 +1,9 @@
-<<<<<<< HEAD
-import os
-=======
 import json
->>>>>>> 9e81978995a17891b14d75beb97720afe18efabe
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
-<<<<<<< HEAD
-
-class Config:
-    MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
-    MONGO_DB_NAME = os.getenv('MONGO_DB_NAME', 'holiday_db')
-    HOLIDAY_API_KEY = os.getenv('HOLIDAY_API_KEY', '')
-    HOLIDAY_API_URL = 'http://localhost:5002'
-    GEMINI_API_KEY = "AIzaSyCm97Bj5ZXfmKWeh7KpL0wL80uom6afAUE"
-    AWS_REGION = 'us-west-2'
-    DATABASE_HANDLER_URL = "http://localhost:5001"
-=======
 # Use this code snippet in your app.
 # If you need more information about configurations
 # or implementing the sample code, visit the AWS docs:
@@ -61,4 +46,3 @@ class Config:
     AWS_REGION = config_data_obj['AWS_REGION']
     HOLIDAY_API_URL = config_data_obj['HOLIDAY_API_URL']
     DATABASE_HANDLER_URL = config_data_obj['DATABASE_HANDLER_URL']
->>>>>>> 9e81978995a17891b14d75beb97720afe18efabe
