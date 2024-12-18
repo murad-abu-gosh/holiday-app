@@ -227,7 +227,7 @@ def extract_and_convert_to_json(json_string):
 
 
 def generate_10_greetings_list(country: str):
-    response = chat_session.send_message(f"Generate 10 holidays for {country}")
+    response = chat_session.send_message(f"Generate 5 holidays for {country}")
     print(f'gemini response text: {response.text}')
     greetings_list = extract_and_convert_to_json(response.text)
     print(f'greetings to JSON: {greetings_list}')
