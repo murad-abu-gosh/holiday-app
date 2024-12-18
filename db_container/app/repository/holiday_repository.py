@@ -28,6 +28,7 @@ class HolidayRepository:
             return
 
         holidays_data = [h.to_dict() for h in holidays]
+        print(f'holidays to be saved to database: {holidays_data}')
         db.insert_many(HolidayRepository.COLLECTION, holidays_data)
 
     @staticmethod
