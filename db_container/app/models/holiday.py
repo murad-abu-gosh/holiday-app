@@ -21,7 +21,22 @@ class Holiday:
         'ar': 'Arabic',
         'he': 'Hebrew',
         'ru': 'Russian',
-        'fr': 'French'
+        'fr': 'French',
+        'es': 'Spanish',
+        'de': 'German',
+        'it': 'Italian',
+        'zh': 'Chinese',
+        'ja': 'Japanese',
+        'ko': 'Korean',
+        'pt': 'Portuguese',
+        'hi': 'Hindi',
+        'bn': 'Bengali',
+        'tr': 'Turkish',
+        'vi': 'Vietnamese',
+        'th': 'Thai',
+        'sw': 'Swahili',
+        'ur': 'Urdu',
+        'nl': 'Dutch'
     }
 
     def __init__(self, name: str, date: date, country: str, type: str,
@@ -42,7 +57,7 @@ class Holiday:
             date=date_obj,
             country=country,
             type=response.get('type', 'National'),
-            greetings={}
+            greetings=response['greetings']
         )
 
     def to_dict(self) -> dict:
