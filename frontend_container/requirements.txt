@@ -1,0 +1,9 @@
+flask
+pymongo
+python-dotenv
+requests
+google-generativeai
+grpcio
+protobuf
+google
+boto3
