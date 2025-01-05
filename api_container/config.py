@@ -1,20 +1,14 @@
 import json
-
 from dotenv import load_dotenv
-
-load_dotenv()
-
-# Use this code snippet in your app.
-# If you need more information about configurations
-# or implementing the sample code, visit the AWS docs:
-# https://aws.amazon.com/developer/language/python/
-
+import os
 import boto3
 from botocore.exceptions import ClientError
 
+load_dotenv()
+
 
 def get_secret():
-    secret_name = "holiday_secrets"
+    secret_name = "holidays-secret"
     region_name = "us-west-2"
 
     # Create a Secrets Manager client
@@ -25,19 +19,10 @@ def get_secret():
     )
 
     try:
-        get_secret_value_response = client.get_secret_value(
-            SecretId=secret_name
-        )
+        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+        return get_secret_value_response['SecretString']
     except ClientError as e:
-        # For a list of exceptions thrown, see
-        # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
         raise e
-
-    secret = get_secret_value_response['SecretString']
-
-    # Your code goes here.
-
-    return secret
 
 
 class Config:
